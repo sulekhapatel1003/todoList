@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #a0d4e3;
+    }
+    #quote {
+      font-size: 1.5rem;
+            font-style: italic;
+            margin: 20px;
+            text-align: center;      
+    }
+    #btn {
+        font-size:1.3rem ;
+        border-radius: 0.5rem;
+        height: 35px;
+        border: none;
+        border: 0.2rem solid  rgb(10, 10, 122);
+    }
+    button:hover {
+        background-color: rgb(43, 177, 226);
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div id="quote">Click the button to see a quote!</div>
+    <button id="btn">Get quote</button>
+
+    <script>
+
+        const quotes = [
+            "Believe you can and you're halfway there.",
+            "Do something today that your future self will thank you for.",
+            "Success is not final, failure is not fatal.",
+            "Happiness comes from your own actions.",
+            "The only limit to our tomorrow is our doubts of today."
+        ];
+        const colors = ["red", "blue", "yellow", "green", "purple", "orange", "teal"];
+
+        const quoteDiv = document.getElementById("quote");
+        const getBtn = document.getElementById("btn");
+
+        getBtn.addEventListener('click', function () {
+            let index = Math.floor(Math.random() * quotes.length);
+            quoteDiv.innerText = quotes[index];
+
+            let colorIndex = Math.floor(Math.random() * colors.length);
+            quoteDiv.style.color = colors[colorIndex];
+        });
+    </script>
+</body>
+
+</html>

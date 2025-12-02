@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> To-Do List</title>
+</head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 50px;
+        background-color: rgb(233, 219, 219)
+    }
+
+    #container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        max-width: 450px;
+
+
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 350px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f5f5f5;
+    }
+
+    input,
+    button {
+        outline: none;
+        border: 1px solid #084fc1;
+        padding: 5px 10px;
+        border-radius: 7px;
+        background-color: rgb(199, 199, 236);
+        cursor: pointer;
+
+    }
+
+
+
+    span {
+        flex-grow: 1;
+        word-break: break-word;
+    }
+
+    .deleteBtn {
+        background-color: rgb(235, 75, 75);
+    }
+
+    .deleteBtn:hover {
+        background-color: rgb(65, 242, 56);
+
+    }
+
+    .editBtn {
+        background-color: rgb(233, 233, 76);
+
+    }
+
+    .editBtn:hover {
+        background-color: rgb(52, 135, 231);
+    }
+
+    #addInput:hover {
+        background-color: cyan;
+    }
+
+         #addInput:hover {
+        background-color: rgb(89, 255, 0);
+    }
+
+</style>
+
+<body>
+    <h1>To-Do List</h1>
+    <div id="container">
+        <input type="text" id="task" placeholder="Enter task">
+        <button id="addInput">Add Task</button>
+    </div>
+    <ul id="addT"></ul>
+
+
+    <script>
+
+        const task = document.getElementById("task");
+        const addInput = document.getElementById("addInput");
+        const addTask = document.getElementById("addT");
+
+        addInput.addEventListener('click', function () {
+            let taskValue = task.value.trim();
+
+            if (taskValue === "") {
+
+                alert("Enter Your Task");
+                return;
+            }
+
+
+            let li = document.createElement("li");
+            let span = document.createElement("span");
+
+
+            span.textContent = taskValue;
+
+            li.appendChild(span);
+
+
+            span.addEventListener("click", function () {
+                if (!span.textContent.startsWith("✔️ ")) {
+                    ;
+                    span.textContent = "✔️ " + span.textContent;
+                }
+            })
+
+            const editBtn = document.createElement("button");
+            editBtn.textContent = "Edit";
+            editBtn.classList.add("editBtn");
+
+            editBtn.addEventListener('click', function () {
+
+                let newText = prompt("Edit Your Text:",);
+                if (newText !== null && newText.trim() !== "") {
+
+                    span.textContent = newText;
+                }
+            })
+
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.style.marginLeft = "10px";
+            deleteBtn.classList.add("deleteBtn"); // for class=================
+
+            deleteBtn.addEventListener('click', function () {
+                li.remove();
+
+            })
+
+
+
+            li.appendChild(editBtn);
+            li.appendChild(deleteBtn);
+
+
+            addTask.appendChild(li);
+            task.value = "";
+
+
+        })
+
+
+    </script>
+
+</body>
+
+
+</html> 

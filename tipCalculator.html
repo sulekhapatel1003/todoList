@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip- Calculator</title>
+</head>
+<style>
+    body{
+          font-family: Arial, sans-serif;
+        background-color:rgb(243, 204, 154);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 40px;
+
+    }
+    #container {
+        background:rgb(228, 7, 252) ;
+        padding: 20px;
+        width: 30%;
+         border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    input,button {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            border: none;
+    }
+    button {
+        width: 40%;
+       margin-left: 30%;
+       background-color: #00bbff;;
+       cursor: pointer;
+       
+    }
+    button:hover {
+            background-color: #b2f330;
+        }
+
+     .result p {
+    /* display: flex; */
+    justify-content: space-between;
+    font-size: 15px;
+    /* margin: 6px 0; */
+}
+
+      
+</style>
+
+<body>
+
+    <div id="container">
+        <h1>Tip-Calculator</h1>
+        <label for="bill">Bill Amount</label>
+        <input type="text" id="bill" placeholder="Enter BIll Amount">
+
+        <label for="per">Tip Percentage(%)</label>
+        <input type="text" id="per" placeholder="Enter Tip Percentage">
+
+        <label for="tipPeople">Number Of people</label>
+
+        <input type="text" id="tipPeople" placeholder="Enter Number Of People">
+        <button id="calculate">Calculate</button>
+    </div>
+       <div class="result">
+    <p>Tip Per Person: <span id="person">0</span></p>
+    <p>Total Per Person: <span id="totalPerPerson">0</span></p>
+</div>
+
+    <script>
+
+        const CalculateBtn = document.getElementById("calculate");
+
+        CalculateBtn.addEventListener("click", function () {
+            let billValue = Number(document.getElementById("bill").value);
+            let Percente = Number(document.getElementById("per").value);
+            let peopleCount = Number(document.getElementById("tipPeople").value);
+
+            if (peopleCount === 0) {
+                alert("Number of people cannot be zero!");
+                return;
+
+                 } 
+            let tipAmount = (billValue*Percente)/100;
+            let tipPerPerson = tipAmount/peopleCount;
+            
+
+            let totalPerPerson = (billValue+tipAmount)/peopleCount
+
+           
+
+            document.getElementById("person").textContent = tipPerPerson.toFixed(2);
+            document.getElementById("totalPerPerson").textContent = totalPerPerson.toFixed(2);
+        });
+       
+    </script>
+
+</body>
+
+</html>
